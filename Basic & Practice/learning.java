@@ -1,15 +1,17 @@
+import java.util.Scanner;
+
 public class learning {
 
+    // Get the square of num
+    public static int square(int num){
+        return num * num;
+    }
+
     public static void main(String[] args) {
-
-        System.out.println("Hello World");
-        int arr[] = {1, 2, 3, 4, 5};
-
-        
-
-        for(int i = 0; i<arr.length; i++){
-            System.out.print(arr[i] + " ");
-        }
-        // System.out.println(arr);
+        System.out.print("Enter Num : ");
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        int ans = square(num);
+        System.out.println("Square of " + num + " = " + ans);
     }
 }
