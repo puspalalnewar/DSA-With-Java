@@ -536,3 +536,157 @@ public class Main {
     <li><strong>protected</strong>: Accessible within the same package and by subclasses in different packages.</li>
     <li><strong>default</strong>: Accessible only within the same package.</li>
 </ul>
+
+<h2>Java Array Topics and Methods</h2>
+
+<h3>1. Introduction to Arrays</h3>
+<ul>
+    <li>Array is a collection of similar data types stored at contiguous memory locations.</li>
+    <li>Array is fixed in size.</li>
+    <li>Syntax:
+        <pre><code>dataType[] arrayName = new dataType[size];</code></pre>
+    </li>
+</ul>
+
+<h3>2. Array Declaration, Instantiation, and Initialization</h3>
+<ul>
+    <li>Declaration:
+        <pre><code>int[] arr;</code></pre>
+    </li>
+    <li>Instantiation:
+        <pre><code>arr = new int[5];</code></pre>
+    </li>
+    <li>Initialization:
+        <pre><code>int[] arr = {1, 2, 3, 4, 5};</code></pre>
+    </li>
+</ul>
+
+<h3>3. Accessing Array Elements</h3>
+<ul>
+    <li>Access elements using the index:
+        <pre><code>int x = arr[2];  // Access 3rd element</code></pre>
+    </li>
+</ul>
+
+<h3>4. Traversing an Array</h3>
+<ul>
+    <li>Using a for loop:
+        <pre><code>
+for (int i = 0; i &lt; arr.length; i++) {
+    System.out.println(arr[i]);
+}
+        </code></pre>
+    </li>
+    <li>Using a for-each loop:
+        <pre><code>
+for (int num : arr) {
+    System.out.println(num);
+}
+        </code></pre>
+    </li>
+</ul>
+
+<h3>5. Common Array Methods</h3>
+<ul>
+    <li><strong>Arrays.toString()</strong> - Converts array to a string representation:
+        <pre><code>import java.util.Arrays;
+
+System.out.println(Arrays.toString(arr));  // Prints the array as [1, 2, 3, 4, 5]</code></pre>
+    </li>
+    <li><strong>Arrays.sort()</strong> - Sorts the array in ascending order:
+        <pre><code>import java.util.Arrays;
+
+Arrays.sort(arr);  // Sorts the array in place</code></pre>
+    </li>
+    <li><strong>Arrays.binarySearch()</strong> - Searches for an element using binary search (array must be sorted):
+        <pre><code>import java.util.Arrays;
+
+int index = Arrays.binarySearch(arr, 3);  // Returns index of element 3</code></pre>
+    </li>
+    <li><strong>Arrays.fill()</strong> - Fills the array with a specific value:
+        <pre><code>import java.util.Arrays;
+
+Arrays.fill(arr, 10);  // Fills the entire array with 10</code></pre>
+    </li>
+    <li><strong>Arrays.copyOf()</strong> - Copies array elements to a new array:
+        <pre><code>import java.util.Arrays;
+
+int[] newArr = Arrays.copyOf(arr, arr.length);  // Copies the array</code></pre>
+    </li>
+</ul>
+
+<h3>6. Multidimensional Arrays</h3>
+<ul>
+    <li>Declaration and Instantiation:
+        <pre><code>int[][] matrix = new int[3][3];</code></pre>
+    </li>
+    <li>Initialization:
+        <pre><code>int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};</code></pre>
+    </li>
+    <li>Accessing elements:
+        <pre><code>int val = matrix[1][2];  // Access element at row 1, column 2</code></pre>
+    </li>
+    <li>Traversing a 2D Array:
+        <pre><code>
+for (int i = 0; i &lt; matrix.length; i++) {
+    for (int j = 0; j &lt; matrix[i].length; j++) {
+        System.out.print(matrix[i][j] + " ");
+    }
+    System.out.println();
+}
+        </code></pre>
+    </li>
+</ul>
+
+<h3>7. Cloning Arrays</h3>
+<ul>
+    <li>Cloning creates a shallow copy:
+        <pre><code>int[] clonedArray = arr.clone();</code></pre>
+    </li>
+</ul>
+
+<h3>8. Comparing Arrays</h3>
+<ul>
+    <li>Use <strong>Arrays.equals()</strong> to check if two arrays are equal:
+        <pre><code>import java.util.Arrays;
+
+boolean isEqual = Arrays.equals(arr1, arr2);</code></pre>
+    </li>
+</ul>
+
+<h3>9. Array Length</h3>
+<ul>
+    <li>The <strong>length</strong> property returns the size of the array:
+        <pre><code>int size = arr.length;</code></pre>
+    </li>
+</ul>
+
+<h3>10. Array Sorting</h3>
+<ul>
+    <li>Use <strong>Arrays.sort()</strong> to sort arrays:
+        <pre><code>import java.util.Arrays;
+
+Arrays.sort(arr);</code></pre>
+    </li>
+</ul>
+
+<h3>11. Copying Arrays</h3>
+<ul>
+    <li>Use <strong>System.arraycopy()</strong> to copy elements between arrays:
+        <pre><code>System.arraycopy(srcArray, srcPos, destArray, destPos, length);</code></pre>
+    </li>
+</ul>
+
+<h3>12. Passing Arrays to Methods</h3>
+<ul>
+    <li>Arrays can be passed as parameters to methods:
+        <pre><code>
+public static void printArray(int[] array) {
+    for (int i : array) {
+        System.out.println(i);
+    }
+}</code></pre>
+    </li>
+</ul>
+
+<h3>

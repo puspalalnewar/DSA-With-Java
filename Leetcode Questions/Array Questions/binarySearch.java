@@ -27,7 +27,7 @@ public class binarySearch {
         int arr[] = { 1, 2, 3, 4, 5, 6 };
         
 
-        for(int i = 0; i<10; i++){
+        for(int i = 0; i < 100; i++){
             System.out.println("Enter Target Element :");
             int target = sc.nextInt();
             System.out.println( "The target element is located at index : " + binarySearch(arr, target));
