@@ -537,7 +537,7 @@ public class Main {
     <li><strong>default</strong>: Accessible only within the same package.</li>
 </ul>
 
-<h2>Java Array Topics and Methods</h2>
+<h1>Java Array Topics and Methods</h1>
 
 <h3>1. Introduction to Arrays</h3>
 <ul>
@@ -690,3 +690,155 @@ public static void printArray(int[] array) {
 </ul>
 
 <h3>
+
+# String
+
+#### In Java, a **string** is an object that represents a sequence of characters. It is used to store and manipulate text. Strings in Java are instances of the `String` class and are immutable, meaning once a `String` object is created, its value cannot be changed. However, various methods allow you to perform operations such as concatenation, comparison, and substring extraction without altering the original string.
+
+### Example of a String in Java:
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Declare and initialize a string
+        String message = "Hello, Java!";
+        
+        // Print the string
+        System.out.println(message);
+        
+        // Find the length of the string
+        int length = message.length();
+        System.out.println("Length of the string: " + length);
+        
+        // Concatenate another string
+        String greeting = "Welcome to ";
+        String combinedMessage = greeting + message;
+        System.out.println("Combined Message: " + combinedMessage);
+        
+        // Check if it contains a substring
+        boolean containsJava = message.contains("Java");
+        System.out.println("Contains 'Java': " + containsJava);
+    }
+}
+```
+## Basic String Functions in Java
+
+Here are some commonly used basic functions of the `String` class in Java:
+
+```Java
+public class Main {
+    public static void main(String[] args) {
+        // Declare and initialize a string
+        String message = "Hello, Java!";
+        
+        // Find the length of the string
+        int length = message.length();
+        System.out.println("Length of the string: " + length);
+        
+        // Access a character at a specific index
+        char charAt = message.charAt(1);
+        System.out.println("Character at index 1: " + charAt);
+        
+        // Convert to uppercase
+        String upperCaseMessage = message.toUpperCase();
+        System.out.println("Uppercase: " + upperCaseMessage);
+        
+        // Convert to lowercase
+        String lowerCaseMessage = message.toLowerCase();
+        System.out.println("Lowercase: " + lowerCaseMessage);
+        
+        // Check if the string contains a substring
+        boolean containsJava = message.contains("Java");
+        System.out.println("Contains 'Java': " + containsJava);
+        
+        // Replace a part of the string
+        String replacedMessage = message.replace("Java", "World");
+        System.out.println("Replaced Message: " + replacedMessage);
+        
+        // Concatenate strings
+        String greeting = "Welcome to ";
+        String combinedMessage = greeting.concat(message);
+        System.out.println("Combined Message: " + combinedMessage);
+        
+        // Compare two strings
+        String anotherMessage = "Hello, Java!";
+        boolean areEqual = message.equals(anotherMessage);
+        System.out.println("Messages are equal: " + areEqual);
+        
+        // Get a substring
+        String substring = message.substring(7, 11); // Extract "Java"
+        System.out.println("Substring: " + substring);
+    }
+}
+```
+
+## StringBuilder in Java
+
+`StringBuilder` in Java is a mutable sequence of characters. Unlike `String`, a `StringBuilder` can be modified after it is created, which makes it more efficient for situations where the string is frequently manipulated, such as in loops.
+
+### Why Use `StringBuilder`?
+- **Mutability**: Unlike `String`, `StringBuilder` can change its value without creating new objects.
+- **Performance**: It’s faster than `String` when you are performing multiple modifications (e.g., concatenations).
+
+### Commonly Used `StringBuilder` Methods:
+
+### 1. `append()`
+Adds text to the end of the existing string.
+
+```java
+StringBuilder sb = new StringBuilder("Hello");
+sb.append(", World!");
+System.out.println(sb); // Output: Hello, World!
+
+```
+
+### 2. `insert()`
+
+```Java
+sb.insert(5, " Java");
+System.out.println(sb); // Output: Hello Java, World!
+```
+### 3. `replace()`
+```Java
+sb.replace(6, 10, "C++");
+System.out.println(sb); // Output: Hello C++, World!
+
+```
+### 4. `delete()`
+
+```Java
+sb.delete(5, 9);
+System.out.println(sb); // Output: Hello, World!
+
+```
+### 5. `reverse()`
+
+```Java
+sb.reverse();
+System.out.println(sb); // Output: !dlroW ,olleH
+```
+## Difference Between `String` and `StringBuilder` in Java
+
+Java provides two main classes for handling strings: `String` and `StringBuilder`. Both serve different purposes, and understanding their differences can help optimize performance in your applications.
+
+| Feature             | `String`                         | `StringBuilder`                   |
+|---------------------|----------------------------------|-----------------------------------|
+| **Mutability**       | Immutable: Once created, the string cannot be changed. Any operation that alters the string creates a new `String` object. | Mutable: You can modify the contents of `StringBuilder` without creating new objects. |
+| **Performance**      | Slower: Since `String` creates new objects when modified, performance can degrade with frequent modifications. | Faster: More efficient for multiple string modifications (e.g., appending, deleting, or replacing characters). |
+| **Thread Safety**    | Thread-safe: Immutable objects are inherently thread-safe. | Not thread-safe: `StringBuilder` is not synchronized, meaning it’s not safe for use in multithreaded environments. Use `StringBuffer` for a thread-safe alternative. |
+| **Usage Scenario**   | Best used for scenarios where the string value remains constant or changes rarely. | Ideal for scenarios where the string is frequently modified (e.g., building dynamic strings in loops). |
+| **Memory Efficiency**| Uses more memory as it creates a new string object every time it is modified. | More memory-efficient as it modifies the existing object rather than creating a new one. |
+| **Instantiation**    | `String str = "Hello";` or `String str = new String("Hello");` | `StringBuilder sb = new StringBuilder("Hello");` |
+| **Concatenation**    | Uses the `+` operator or `concat()` method. Each concatenation creates a new `String` object. | Uses the `append()` method, modifying the existing `StringBuilder` object. |
+
+### When to Use String vs. StringBuilder:
+#### Use String when
+
+- The value is constant or changes infrequently.
+- You require thread safety without external synchronization.
+
+#### Use StringBuilder when 
+
+- You need to perform multiple string modifications (e.g., appending in loops).
+- Performance is a concern, especially with large or frequently changing strings.
+- Thread safety is not a requirement.
+
