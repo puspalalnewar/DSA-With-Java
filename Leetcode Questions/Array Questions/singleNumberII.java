@@ -1,4 +1,6 @@
 public class singleNumberII {
+
+    // Time Complexity O(N^2)
     public static int singleNumber(int[] nums) {
         int count = 0;
         int store = 0;

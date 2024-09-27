@@ -842,3 +842,170 @@ Java provides two main classes for handling strings: `String` and `StringBuilder
 - Performance is a concern, especially with large or frequently changing strings.
 - Thread safety is not a requirement.
 
+<hr/>
+
+# LinkedList 
+
+### What is a LinkedList?
+A **LinkedList** is a linear data structure where elements (called **nodes**) are stored in a sequence, but unlike arrays, the elements are not stored in contiguous memory locations. Each node contains:
+1. **Data**: The value of the node.
+2. **Pointer (or reference)**: A reference to the next node in the sequence.
+
+### Types of LinkedLists:
+1. **Singly Linked List**:
+   - Each node has data and a reference to the next node.
+   - Traversal is possible only in one direction (from head to tail).
+
+2. **Doubly Linked List**:
+   - Each node has data, a reference to the next node, and a reference to the previous node.
+   - Traversal is possible in both directions (forward and backward).
+
+3. **Circular Linked List**:
+   - In a circular linked list, the last node points back to the first node, forming a loop.
+   - Can be singly or doubly linked.
+   - There is no `null` reference at the end.
+
+### Advantages of LinkedLists:
+1. **Dynamic Size**:
+   - Unlike arrays, LinkedLists do not need to be initialized with a fixed size, and they can grow or shrink as needed.
+
+2. **Efficient Insertion/Deletion**:
+   - Inserting or deleting elements is easier and faster as there is no need to shift elements like in arrays. Only the pointers need to be updated.
+
+3. **Efficient Memory Usage**:
+   - Memory is allocated as needed (no wasted space or need for resizing).
+
+4. **No Contiguous Memory Requirement**:
+   - Nodes can be stored anywhere in memory, and they are connected using pointers, making them suitable for situations where memory allocation is fragmented.
+
+### Disadvantages of LinkedLists:
+1. **Extra Memory for Pointers**:
+   - Each node requires additional memory for storing the pointer/reference to the next node, which can be overhead, especially in large lists.
+
+2. **Sequential Access**:
+   - Accessing elements requires traversing the list from the beginning, making it slower to access elements compared to arrays (which allow direct access via indexing).
+
+3. **Slower Search**:
+   - Finding an element in a LinkedList requires traversing through the list, leading to a time complexity of O(n), whereas arrays allow faster lookups with O(1).
+
+4. **Complexity**:
+   - Operations like reverse traversal are more complex in singly linked lists and require additional overhead (like maintaining previous references).
+
+### When to Use LinkedLists:
+- When frequent insertions and deletions from the middle of the list are needed.
+- When the size of the data structure is not known in advance.
+- When contiguous memory allocation is not possible or desirable.
+
+### When to Avoid LinkedLists:
+- When frequent access to elements is needed, as array-based structures are more efficient for accessing elements by index.
+- If memory overhead (extra space for pointers) is a concern.
+
+## Code
+
+```Java
+
+// Node class to represent each element in the LinkedList
+class Node {
+    int data;
+    Node next;
+
+    // Constructor to initialize the node
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+// LinkedList class
+public class LinkedList {
+    Node head;
+
+    // Insert a node at the beginning (head)
+    public void insertAtHead(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
+
+    // Insert a node at the end (tail)
+    public void insertAtTail(int data) {
+        Node newNode = new Node(data);
+
+        // If the list is empty, make the new node the head
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        // Traverse to the last node
+        Node last = head;
+        while (last.next != null) {
+            last = last.next;
+        }
+
+        // Insert the new node at the end
+        last.next = newNode;
+    }
+
+    // Insert a node at a specified position (middle)
+    public void insertAtPosition(int data, int position) {
+        Node newNode = new Node(data);
+
+        // If inserting at the head (position 0)
+        if (position == 0) {
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+
+        // Traverse to the node just before the desired position
+        Node previous = head;
+        for (int i = 0; i < position - 1 && previous != null; i++) {
+            previous = previous.next;
+        }
+
+        // If position is invalid (greater than the length of the list)
+        if (previous == null) {
+            System.out.println("Invalid position");
+            return;
+        }
+
+        // Insert the new node at the specified position
+        newNode.next = previous.next;
+        previous.next = newNode;
+    }
+
+    // Method to display the LinkedList
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+
+        // Insert at the head
+        list.insertAtHead(10);
+        list.insertAtHead(20);
+        System.out.println("After inserting at head:");
+        list.display(); // 20 -> 10 -> null
+
+        // Insert at the tail
+        list.insertAtTail(30);
+        System.out.println("After inserting at tail:");
+        list.display(); // 20 -> 10 -> 30 -> null
+
+        // Insert at a specific position
+        list.insertAtPosition(15, 2);
+        System.out.println("After inserting at position 2:");
+        list.display(); // 20 -> 10 -> 15 -> 30 -> null
+    }
+}
+
+```
+
+
