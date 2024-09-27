@@ -900,6 +900,12 @@ A **LinkedList** is a linear data structure where elements (called **nodes**) ar
 - When frequent access to elements is needed, as array-based structures are more efficient for accessing elements by index.
 - If memory overhead (extra space for pointers) is a concern.
 
+## How LinkedList Works
+
+<p align="center">
+  <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240219155344/Singly-Linked-List.webp" alt="LinkedList working GIF" width="500">
+</p>
+
 ## Code
 
 ```Java
@@ -1007,5 +1013,7 @@ public class LinkedList {
 }
 
 ```
+
+
 
 
