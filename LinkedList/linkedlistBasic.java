@@ -63,8 +63,7 @@ public class linkedlistBasic {
             return;
         }
         newNode.next = temp.next;
-        temp.next = newNode;
-
+        temp.next = newNode; // If we take the exaple of 3 nodes(1->2->3->null) and I want to insert the newNode into the 3rd position. At that time (temp.next) is the orginal 3rd nodes position.
     }
 
     // Print LinkedList
