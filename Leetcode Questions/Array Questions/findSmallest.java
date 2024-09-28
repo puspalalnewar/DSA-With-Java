@@ -16,6 +16,6 @@ public class findSmallest {
     public static void main(String[] args) {
         int arr[] = { 5, 4, 7, 0, 6, -1, 23 };
         System.out.println("The smallest element : " + findSmallest(arr));
-
+        
     }
 }

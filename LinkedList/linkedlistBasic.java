@@ -1,7 +1,5 @@
 package LinkedList;
 
-import java.util.LinkedList;
-
 // Node class to represent each element in the LinkedList
 class Node{
     int data;
@@ -15,10 +13,10 @@ class Node{
 }
 
 public class linkedlistBasic {
-
-    Node head = new Node(12);
-
     
+    Node head = null;
+
+    // Insert At Beginning
     public void insertNode(int data){
         Node newNode = new Node(data);
         if(head == null){
@@ -29,6 +27,47 @@ public class linkedlistBasic {
         head = newNode;
     }
 
+    // Insert At End
+    public void insertAtEnd(int newData){
+        Node newNode = new Node(newData);
+        if(head == null){
+            head = newNode;
+            return;
+        }
+        Node temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        temp.next = newNode;
+
+    }
+
+    // Insert At specific position
+    public void insertAtPosition(int data, int position){
+        Node newNode = new Node(data);
+        if(head == null){
+            head = newNode;
+            return;
+        }
+        if(position == 1){
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+        Node temp = head;
+        for(int i = 1; temp != null && i<position-1; i++){
+            temp = temp.next;
+        }
+        if(temp == null){
+            System.out.println("Invalid position");
+            return;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+
+    }
+
+    // Print LinkedList
     public void display(){
         Node temp = head;
         while (temp != null) {
@@ -40,8 +79,16 @@ public class linkedlistBasic {
 
     public static void main(String[] args) {
         linkedlistBasic list = new linkedlistBasic();
-        // list.insertNode(5);
-        System.out.println(list.head.data);
+        list.insertNode(5);
+        list.insertNode(4);
+        list.insertNode(3);
+        list.insertNode(2);
+        list.insertNode(1);
+        list.insertAtEnd(6);
+        list.insertAtPosition(0, 1);
+        list.insertAtPosition(0, 1);
+        list.insertAtPosition(15, 1);
+        // System.out.println(list.head.data);
         list.display();
     }
 }
