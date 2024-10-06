@@ -1,16 +1,16 @@
-
+class Node{
+    int data;
+    Node next;
+    public Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+}
 public class practice{
 
     Node head = null;
 
-    public class Node{
-        int data;
-        Node next;
-        public Node(int data){
-            this.data = data;
-            this.next = null;
-        }
-    }
+    
     
     // Insert at beginning
     public void insertAtBeg(int data){
@@ -48,11 +48,14 @@ public class practice{
 
     public static void main(String[] args) {
         practice ll = new practice();
+        practice newLL = new practice();
         ll.insertAtBeg(0);
-        ll.insertAtBeg(-1);
+        ll.insertAtBeg(1);
         // ll.insertAtEnd(0);
         // System.out.println(ll.head.data);
-        ll.printLL();
+        // ll.printLL();
+        newLL.insertAtBeg(20);
+        System.out.println(newLL.head.data);
 
     }
 }
