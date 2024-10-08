@@ -1014,6 +1014,97 @@ public class LinkedList {
 
 ```
 
+## LinkedList Deletion Node
+
+```Java
+// Define the Node class
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+// Define the LinkedList class
+class LinkedList {
+    Node head;
+
+    // Method to delete a node by its value
+    public void deleteNode(int key) {
+        Node temp = head, prev = null;
+
+        // Case 1: If the head node itself holds the key to be deleted
+        if (temp != null && temp.data == key) {
+            head = temp.next; // Changed head
+            return;
+        }
+
+        // Case 2: Search for the key to be deleted, keeping track of the previous node
+        while (temp != null && temp.data != key) {
+            prev = temp;
+            temp = temp.next;
+        }
+
+        // Case 3: If the key was not present in the linked list
+        if (temp == null) {
+            System.out.println("Key not found in the list.");
+            return;
+        }
+
+        // Case 4: Unlink the node from the linked list
+        prev.next = temp.next;
+    }
+
+    // Method to add a node to the linked list
+    public void insert(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node last = head;
+            while (last.next != null) {
+                last = last.next;
+            }
+            last.next = newNode;
+        }
+    }
+
+    // Method to print the linked list
+    public void printList() {
+        Node currNode = head;
+        while (currNode != null) {
+            System.out.print(currNode.data + " -> ");
+            currNode = currNode.next;
+        }
+        System.out.println("null");
+    }
+}
+
+// Main class to test the deletion
+public class Main {
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+
+        // Insert elements into the linked list
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        list.insert(4);
+
+        System.out.println("Original List:");
+        list.printList();
+
+        // Delete a node with value 3
+        list.deleteNode(3);
+        System.out.println("After Deleting Node 3:");
+        list.printList();
+    }
+}
+```
+
 
 
 

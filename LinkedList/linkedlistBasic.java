@@ -66,6 +66,24 @@ public class linkedlistBasic {
         temp.next = newNode; // If we take the exaple of 3 nodes(1->2->3->null) and I want to insert the newNode into the 3rd position. At that time (temp.next) is the orginal 3rd nodes position.
     }
 
+    // Delete from Beginning
+    public void deleteNode(int key){
+        Node temp = head, prev = null;
+        if(temp!= null && temp.data == key){
+            head = temp.next;
+            return;
+        }
+        while (temp!=null && temp.data != key) {
+            prev = temp;
+            temp = temp.next;
+        }
+        if (temp == null) {
+            System.out.println("Key not found in the list.");
+            return;
+        }
+        prev.next = temp.next;
+    }
+
     // Print LinkedList
     public void display(){
         Node temp = head;
@@ -88,6 +106,8 @@ public class linkedlistBasic {
         list.insertAtPosition(0, 1);
         list.insertAtPosition(15, 1);
         // System.out.println(list.head.data);
+        list.deleteNode(15);
+        list.deleteNode(0);
         list.display();
     }
 }
